@@ -1,0 +1,699 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>CV Workshop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  /* Layout: sticky navy level bar; one part at a time as a white lesson sheet, then a task card with a dark header strip. Highlighter yellow is the single bold mark. */
+  --bg:#E8ECF3; --paper:#FFFFFF; --paper-2:#F3F5F9; --ink:#14213D; --ink-2:#44506B; --line:#C5CDDB;
+  --hl:#FFE14D; --on-hl:#14213D; --sel:#FFF3B0;
+  --bar-bg:#14213D; --bar-fg:#FFFFFF; --task-bd:#14213D;
+  --btn-bg:#14213D; --btn-fg:#FFFFFF;
+  --good:#0F6B3C; --good-bg:#DCF2E5; --bad:#A92318; --bad-bg:#FCE3E0; --focus:#2446D6;
+  --cv-bg:#FFFFFF; --cv-ink:#1B2433; --cv-mute:#5A667D; --cv-line:#C5CDDB; --cv-sel:#FFF3B0;
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'Atkinson Hyperlegible','Segoe UI',system-ui,-apple-system,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1424; --paper:#15203A; --paper-2:#1B2847; --ink:#E9EDF6; --ink-2:#AAB5CD; --line:#2E3D60;
+    --hl:#FFD93D; --sel:#3B3612; --bar-bg:#070D1A; --bar-fg:#E9EDF6; --task-bd:#4A5C8A;
+    --btn-bg:#FFD93D; --btn-fg:#14213D;
+    --good:#6FD9A2; --good-bg:#103A2A; --bad:#FF9D94; --bad-bg:#4A1F1F; --focus:#9DB2FF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1424; --paper:#15203A; --paper-2:#1B2847; --ink:#E9EDF6; --ink-2:#AAB5CD; --line:#2E3D60;
+  --hl:#FFD93D; --sel:#3B3612; --bar-bg:#070D1A; --bar-fg:#E9EDF6; --task-bd:#4A5C8A;
+  --btn-bg:#FFD93D; --btn-fg:#14213D;
+  --good:#6FD9A2; --good-bg:#103A2A; --bad:#FF9D94; --bad-bg:#4A1F1F; --focus:#9DB2FF;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:1.0625rem/1.6 var(--f-body);-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+button{font-family:inherit}
+.mono{font-family:var(--f-mono);font-weight:500;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+mark{background:var(--hl);color:var(--on-hl);padding:0 .25em;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bar-bg);color:var(--bar-fg);border-bottom:1px solid var(--line)}
+.top :focus-visible{outline-color:var(--hl)}
+.top-in{max-width:900px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.brand{display:flex;align-items:center;gap:10px;font:800 1.1rem var(--f-display)}
+.brand-mark{background:var(--hl);color:var(--on-hl);padding:2px 8px;border-radius:3px}
+.levels{display:flex;border:1.5px solid var(--bar-fg);border-radius:6px;overflow:hidden}
+.lv{appearance:none;border:0;background:transparent;color:var(--bar-fg);font:700 .95rem var(--f-body);padding:6px 16px;min-height:40px;cursor:pointer}
+.lv + .lv{border-left:1.5px solid var(--bar-fg)}
+.lv[aria-pressed="true"]{background:var(--hl);color:var(--on-hl)}
+.sc{font:500 .85rem var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sc b{font-size:1.15rem}
+@media (max-width:480px){.brand-text{display:none}}
+
+/* page */
+.wrap{max-width:900px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+.wrap > *{min-width:0}
+.intro{display:grid;gap:12px}
+.intro h1{font-size:clamp(1.9rem,6vw,2.9rem);font-weight:800;letter-spacing:-.01em}
+.intro .tagline{max-width:62ch;color:var(--ink-2)}
+.how{display:flex;flex-wrap:wrap;gap:8px 22px;padding:0;margin:0;list-style:none;counter-reset:h}
+.how li{counter-increment:h;display:flex;gap:8px;align-items:center;font-weight:700}
+.how li::before{content:counter(h);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font:500 .8rem var(--f-mono)}
+.eyebrow{color:var(--ink-2)}
+
+.steps{display:flex;flex-wrap:wrap;gap:8px}
+.step{appearance:none;display:flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;padding:6px 12px 6px 6px;font:700 .9rem var(--f-body);cursor:pointer;min-height:40px}
+.step .sn{display:grid;place-items:center;width:26px;height:26px;border-radius:4px;background:var(--paper-2);border:1px solid var(--line);font:500 .8rem var(--f-mono)}
+.step.on{border-color:var(--ink);background:var(--sel)}
+.step.on .sn{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.step.done .sn{background:var(--good-bg);color:var(--good);border-color:var(--good)}
+.step .ss{font:500 .75rem var(--f-mono);color:var(--ink-2)}
+
+/* lesson sheet */
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:clamp(18px,4vw,34px);display:grid;gap:16px}
+.sheet > *{min-width:0}
+.ptitle{font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:800}
+.ptitle:focus{outline:none}
+.sheet p,.sheet li{max-width:68ch}
+.sheet ul,.sheet ol{margin:0;padding-left:1.3rem;display:grid;gap:6px}
+.sheet h4{font-size:1.1rem;font-weight:700;margin-top:6px}
+.callout{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:12px 16px}
+.words{list-style:none;padding:0!important;display:flex!important;flex-wrap:wrap;gap:8px!important}
+.words li{border:1.5px solid var(--ink);border-radius:999px;padding:2px 12px;font-weight:700;font-size:.95rem}
+.wtitle{font-size:1.1rem;font-weight:700}
+
+.gloss{display:grid;grid-template-columns:minmax(120px,max-content) minmax(0,1fr);gap:8px 18px;margin:0;padding:14px 16px;background:var(--paper-2);border:1px solid var(--line);border-radius:6px}
+.gloss dt{font:700 1rem var(--f-display)}
+.gloss dd{margin:0;max-width:60ch}
+@media (max-width:520px){.gloss{grid-template-columns:minmax(0,1fr)}.gloss dd{margin-bottom:6px}}
+
+.ann{display:grid;gap:16px;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start}
+.ann .note{grid-column:2;grid-row:1;position:sticky;top:96px;background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;gap:6px}
+.ann .cv{grid-column:1;grid-row:1}
+.cv{background:var(--cv-bg);color:var(--cv-ink);border:1px solid var(--cv-line);border-radius:4px;padding:12px;display:grid;gap:8px;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.cvsec{appearance:none;text-align:left;display:grid;gap:2px;background:transparent;color:var(--cv-ink);border:1.5px dashed var(--cv-line);border-radius:4px;padding:8px 10px;cursor:pointer;font:.95rem/1.45 var(--f-body);min-width:0;overflow-wrap:anywhere}
+.cvsec[aria-pressed="true"]{background:var(--cv-sel);border:1.5px solid #14213D}
+.cvsec .lab{font:500 .68rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cv-mute)}
+.cvsec .big{font:800 1.35rem/1.2 var(--f-display)}
+@media (max-width:720px){
+  .ann{grid-template-columns:minmax(0,1fr)}
+  .ann .note{grid-column:1;position:static}
+  .ann .cv{grid-column:1;grid-row:2}
+}
+
+.pairs{display:grid;gap:14px}
+.pair{display:grid;gap:8px}
+.pair .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair .c{border-radius:6px;padding:10px 14px;display:grid;gap:4px}
+.pair .before{background:var(--bad-bg)}
+.pair .after{background:var(--good-bg)}
+.pair .before .mono{color:var(--bad)}
+.pair .after .mono{color:var(--good)}
+.pair .pn{color:var(--ink-2);font-size:.95rem}
+@media (max-width:620px){.pair .cols{grid-template-columns:minmax(0,1fr)}}
+
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dd > div{border-radius:6px;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.dd .do{background:var(--good-bg)}
+.dd .dont{background:var(--bad-bg)}
+.dd h4{margin:0}
+.dd .do h4{color:var(--good)}
+.dd .dont h4{color:var(--bad)}
+.dd ul{list-style:none;padding:0!important;display:grid;gap:8px!important}
+.dd li{display:flex;gap:10px}
+.dd .g{font-weight:800;flex:none}
+@media (max-width:620px){.dd{grid-template-columns:minmax(0,1fr)}}
+
+/* task card */
+.task{border:2px solid var(--task-bd);border-radius:6px;background:var(--paper);overflow:hidden}
+.task-h{display:flex;justify-content:space-between;gap:12px;background:var(--bar-bg);color:var(--bar-fg);padding:10px clamp(16px,3vw,24px)}
+.task-b{padding:clamp(16px,3vw,28px);display:grid;gap:18px}
+.task-b > *{min-width:0}
+.task-b h3{font-size:1.4rem;font-weight:800}
+.lead{color:var(--ink-2);max-width:62ch}
+.items{display:grid;gap:22px}
+.q{display:grid;gap:10px}
+.qt{display:flex;gap:10px;font-weight:700}
+.qn{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:4px;background:var(--btn-bg);color:var(--btn-fg);font:500 .8rem var(--f-mono);flex:none}
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;min-height:46px;background:var(--paper)}
+.opt:hover{border-color:var(--ink-2)}
+.opt:has(input:checked){background:var(--sel);border-color:var(--ink)}
+.opt input{accent-color:var(--btn-bg);width:20px;height:20px;flex:none;margin:0}
+.opt .otxt{min-width:0;overflow-wrap:anywhere}
+.opt .tag{margin-left:auto;font:500 .68rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;padding-left:8px}
+.opt.is-correct{background:var(--good-bg);border-color:var(--good)}
+.opt.is-correct .tag{color:var(--good)}
+.opt.is-wrong{background:var(--bad-bg);border-color:var(--bad)}
+.opt.is-wrong .tag{color:var(--bad)}
+.eitems{display:grid;gap:12px}
+.eitem{display:grid;gap:6px}
+.fb{padding:10px 14px;border-radius:6px;font-size:.98rem}
+.fb.ok{background:var(--good-bg);color:var(--good)}
+.fb.no{background:var(--bad-bg);color:var(--bad)}
+
+.rows{display:grid;gap:12px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,230px);gap:8px 14px;align-items:center;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px}
+.row .rt{display:flex;gap:10px;align-items:flex-start;overflow-wrap:anywhere}
+.row .fb{grid-column:1/-1}
+.row.ok{border-color:var(--good)}
+.row.no{border-color:var(--bad)}
+@media (max-width:560px){.row{grid-template-columns:minmax(0,1fr)}}
+select{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink-2);border-radius:6px;padding:8px 10px;min-height:44px;max-width:100%}
+
+.bank{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:12px;background:var(--paper-2);border:1px dashed var(--ink-2);border-radius:6px}
+.bank li{font:700 .95rem var(--f-body);padding:4px 12px;border:1.5px solid var(--ink);border-radius:999px}
+.gaps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.gap{display:grid;gap:8px;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px}
+.gap.ok{border-color:var(--good)}
+.gap.no{border-color:var(--bad)}
+.gl{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.gl select{min-width:10.5em}
+
+textarea{width:100%;min-height:150px;font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink-2);border-radius:6px;padding:12px;resize:vertical}
+.count{font:500 .8rem var(--f-mono);color:var(--ink-2)}
+.crit{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.crit li{display:flex;gap:10px;padding:8px 12px;border-radius:6px;border:1.5px solid var(--line)}
+.crit li.ok{background:var(--good-bg);color:var(--good);border-color:var(--good)}
+.crit li.no{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.crit .mk{font-weight:800;flex:none}
+.model{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:12px 16px;display:grid;gap:6px}
+
+.result{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:16px 20px;border:2px solid var(--task-bd);border-radius:6px;background:var(--sel);color:var(--ink);scroll-margin-top:90px}
+.result:focus{outline:none}
+.result .rs{font:800 3rem/1 var(--f-display);font-variant-numeric:tabular-nums}
+.result .o{font-size:1.4rem;color:var(--ink-2)}
+.task-f{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-top:1px dashed var(--line);padding-top:16px}
+.warn{color:var(--bad);font-weight:700}
+
+.btn{appearance:none;border:2px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg);font:700 1rem var(--f-body);padding:10px 20px;border-radius:6px;min-height:46px;cursor:pointer;transition:transform .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.link{appearance:none;background:none;border:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font:700 1rem var(--f-body);cursor:pointer;padding:0}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot{margin-top:12px;border-top:1px solid var(--line);padding-top:16px;color:var(--ink-2);font:500 .8rem var(--f-mono);letter-spacing:.04em;text-align:center;overflow-wrap:anywhere}
+
+/* results */
+.tot{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px}
+.tot .big{font:800 clamp(3.2rem,12vw,5rem)/1 var(--f-display);font-variant-numeric:tabular-nums}
+.tot .o{font:800 1.6rem var(--f-display);color:var(--ink-2)}
+.tot .pc{margin-left:auto}
+.tot .pc mark{font:800 1.4rem var(--f-display)}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:minmax(110px,170px) minmax(0,1fr) 70px;gap:12px;align-items:center}
+.bar .trk{height:14px;background:var(--paper-2);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.bar .fil{display:block;height:100%;background:var(--btn-bg)}
+.bar .bs{font:500 .85rem var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.bar{grid-template-columns:minmax(0,1fr) auto}.bar .trk{grid-column:1/-1;grid-row:2}}
+.next{list-style:none;padding:0!important;display:grid;gap:8px!important}
+.share{display:grid;gap:8px}
+.share input{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink-2);border-radius:6px;padding:8px 12px;min-height:44px;max-width:360px;width:100%}
+.share textarea{min-height:140px;font:500 .85rem/1.5 var(--f-mono)}
+.acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><span class="brand-mark">CV</span><span class="brand-text">Workshop</span></div>
+    <div class="levels" role="group" aria-label="Choose your level">
+      <button type="button" class="lv" data-level="A2" aria-pressed="true">A2</button>
+      <button type="button" class="lv" data-level="B2" aria-pressed="false">B2</button>
+    </div>
+    <div class="sc" aria-live="polite" aria-label="Your score"><b id="scoreNow">0</b>/<span id="scoreMax">30</span> pts</div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="intro" id="intro"></section>
+  <nav class="steps" id="steps" aria-label="Lesson parts"></nav>
+  <article id="part"></article>
+  <div class="pager" id="pager"></div>
+  <footer class="foot">Nannestad High School - Barbara Anna Zielonka</footer>
+</main>
+
+<script>
+(function(){
+'use strict';
+
+var QUAL=/\b(friendly|helpful|reliable|polite|hard-?working|hard working|careful|organi[sz]ed|responsible|creative|motivated|kind|honest|patient|positive)\b/i;
+var ACT=/\b(led|organi[sz]ed|created|coordinated|designed|launched|managed|developed|introduced|achieved|delivered|raised|translated|increased|improved|edited|built|presented|streamlined|collaborated|analy[sz]ed)\b/i;
+var CLICHE=/(team player|hard[- ]?working|hard worker|passionate about|think outside the box|go-getter|results[- ]driven)/i;
+var SEEK=/\b(seeking|applying|aiming|looking (for|to)|keen to|hoping to|eager to|aspiring)\b/i;
+var SKILLW=/(skill|experience|communicat|leadership|language|design|coding|marketing|research|analy|organis|organiz|creativ|presentation|teamwork|negotiat)/i;
+
+function words(t){return (t.trim().match(/\S+/g)||[]).length}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function countOf(T){return T.kind==='write'?T.criteria.length:T.kind==='errors'?T.items.filter(function(x){return x.err}).length:T.items.length}
+function slots(T){return T.kind==='write'?T.criteria.length:T.items.length}
+function ansText(T,st){if(T.kind==='errors')return 'Marked '+st.a.filter(Boolean).length+' of '+st.a.length+' lines';return 'Answered '+answered(st)+' of '+st.a.length}
+
+var DATA={
+/* ------------------------------------------------------------------ A2 */
+A2:{
+  code:'A2', tag:'Level A2 · Elementary',
+  h:'Write your <mark>first CV</mark>',
+  intro:'You will learn what a CV is, what goes in it, and how to write good lines and how to check a CV for mistakes, in simple English. There are 5 parts. Each part has a short lesson and a task. You see your score after each task.',
+  how:['Read the short lesson','Do the task','See your score'],
+  msgs:[[1,'Perfect score!','Every answer is right. Well done.'],[0.8,'Very good!','Most answers are right. Read the notes for the other answers.'],[0.5,'Good try.','Read the notes below. Then press “Try again”.'],[0,'Keep going.','Read the lesson again. Then try the task one more time.']],
+  final:[[0.85,'Excellent work!','You know what a CV is and how to write one. You are ready to write your own CV.'],[0.65,'Good work!','You know a lot about CVs. Try the tasks with a low score again.'],[0.4,'A good start.','Read the lessons again. Then try the tasks again.'],[0,'Keep practising.','Read each lesson slowly. Do the tasks again. You can do it!']],
+  parts:[
+  { nav:'What is a CV?', title:'What is a CV?', review:'Read Part 1 again: what a CV is.',
+    theory:`<p>A <b>CV</b> is a short paper about you. It tells a company or a shop about your school, your jobs and your skills. You send your CV when you want a job.</p>
+<p><b>CV</b> means <i>Curriculum Vitae</i>. This is Latin. It means “the course of life”.</p>
+<h4>Why do you need a CV?</h4>
+<ul><li>You show who you are.</li><li>You show what you can do.</li><li>The boss can read it fast.</li></ul>
+<p class="callout">Remember: a good CV is <mark>short, clear and true</mark>. For a student, one page is enough.</p>`,
+    widget:{type:'gloss',title:'Key words',terms:[['job','work that you do for money'],['skill','something you can do well'],['experience','things you did before, for example a job'],['education','your school and your courses'],['reference','a person who knows you and can say good things about you'],['employer','a person or company that gives you a job']]},
+    task:{kind:'mcq',label:'Quiz',title:'Quick quiz',intro:'Read each question. Choose one answer.',items:[
+      {q:'What is a CV?',opts:['A school test','A short paper about you for a job','A letter to a friend'],a:1,why:'A CV tells an employer about you.'},
+      {q:'When do you send a CV?',opts:['When you want a job','When you go on holiday','When you buy a phone'],a:0,why:'You send a CV when you want a job.'},
+      {q:'How long is a good CV for a student?',opts:['Ten pages','Half a page','One page'],a:2,why:'One page is enough. Employers are busy.'},
+      {q:'Which email address is best for a CV?',opts:['cutekitty99@mail.com','anna.novak@mail.com','dontcallme@mail.com'],a:1,why:'Use your name. It looks serious.'},
+      {q:'What should you write in a CV?',opts:['Only true things','A few small lies','Only funny things'],a:0,why:'Always write true things.'}]}
+  },
+  { nav:'Sections', title:'What goes in a CV?', review:'Read Part 2 again: the sections of a CV.',
+    theory:`<p>A CV has <b>sections</b>. Each section has a title and a few short lines. Most CVs have these sections:</p>
+<ul><li><b>Personal details</b>: your name, email, phone number and city</li><li><b>Profile</b>: two or three short sentences about you</li><li><b>Education</b>: your school and the years</li><li><b>Work experience</b>: jobs and volunteer work</li><li><b>Skills</b>: languages and computer skills</li></ul>
+<p>Put the newest school or job first.</p>`,
+    widget:{type:'ann',hint:'Tap a part of Anna’s CV. Read what it does.',secs:[
+      {label:'Personal details',big:true,lines:['Anna Novak','anna.novak@mail.com · +47 912 34 567 · Oslo'],note:'Your name, email, phone number and city. Check them two times. A wrong number means no call!'},
+      {label:'Profile',lines:['Friendly student. I like working with people.'],note:'Two or three short sentences about you. Say who you are and what you like.'},
+      {label:'Education',lines:['Maple High School, 2022–2026'],note:'Write the name of your school and the years. Put the newest school first.'},
+      {label:'Work experience',lines:['Waiter, Blue Café, summer 2025','Served customers. Cleaned tables.'],note:'Jobs and volunteer work. Write the job, the place and the time. Then say what you did.'},
+      {label:'Skills',lines:['English (good), German (a little)','Word, Excel'],note:'Languages and computer skills. Be exact.'},
+      {label:'Interests',lines:['Football, drawing'],note:'Two or three things you like. Keep it short.'}]},
+    task:{kind:'classify',label:'Sorting',title:'Sort the lines',intro:'Put each line in the right section of a CV. Use the menu.',cats:[{k:'pd',l:'Personal details'},{k:'edu',l:'Education'},{k:'work',l:'Work experience'},{k:'skill',l:'Skills'}],items:[
+      {t:'anna.novak@mail.com',a:'pd',why:'An email address is a personal detail.'},
+      {t:'Maple High School, 2022–2026',a:'edu',why:'A school and the years go in Education.'},
+      {t:'Waiter at Blue Café, summer 2025',a:'work',why:'A job goes in Work experience.'},
+      {t:'Speaks English and German',a:'skill',why:'Languages are skills.'},
+      {t:'Phone: +47 912 34 567',a:'pd',why:'A phone number is a personal detail.'},
+      {t:'Helped at a children’s football camp',a:'work',why:'Volunteer work is also work experience.'},
+      {t:'Can use Word and Excel',a:'skill',why:'Computer programs are skills.'},
+      {t:'English course, Oslo Language School, 2025',a:'edu',why:'A course is education.'}]}
+  },
+  { nav:'Action verbs', title:'Start with an action verb', review:'Read Part 3 again: action verbs.',
+    theory:`<p>An <b>action verb</b> tells what you did. Start each line in your work experience with an action verb. Use the <b>past tense</b> for old jobs.</p>
+<ul><li><i>Served</i> customers</li><li><i>Cleaned</i> tables</li><li><i>Helped</i> children</li></ul>
+<p class="callout">Do not start with “I”. Write <mark>Served customers</mark>, not “I served customers”.</p>
+<p>Write dates like this: <b>June 2025 – August 2025</b>.</p>`,
+    widget:{type:'ba',title:'Weak line and strong line',pairs:[
+      {bad:'I was in a café and I did some work.',good:'Served customers in a café.',note:'Start with an action verb.'},
+      {bad:'Work in a shop.',good:'Helped customers in a shop.',note:'Say what you did, not only where.'},
+      {bad:'I am good with computers.',good:'Can use Word and Excel.',note:'Name the programs. Be exact.'}]},
+    task:{kind:'gap',label:'Gap fill',title:'Choose the action verb',intro:'Choose the best word for each gap. Use each word once.',bank:['Spoke','Cleaned','Organised','Served','Worked','Helped'],items:[
+      {pre:'',post:' food and drinks to customers.',a:['Served'],why:'You serve food and drinks.'},
+      {pre:'',post:' the shop every evening.',a:['Cleaned'],why:'You clean a shop.'},
+      {pre:'',post:' children with their homework.',a:['Helped'],why:'You help children with homework.'},
+      {pre:'',post:' a sports day for 80 students.',a:['Organised'],why:'You organise an event.'},
+      {pre:'',post:' in a team of four people.',a:['Worked'],why:'You work in a team.'},
+      {pre:'',post:' English with tourists.',a:['Spoke'],why:'You speak a language.'}]}
+  },
+  { nav:'Do and don’t', title:'Do and don’t', review:'Read Part 4 again: do and don’t.',
+    theory:`<p>A good CV looks neat and is easy to read. Look at these two lists. Then do the task.</p>`,
+    widget:{type:'dd',dos:['Use one page.','Use a clear, simple font.','Check your spelling two times.','Write only true things.','Use a serious email address, like anna.novak@mail.com.'],donts:['Do not use a funny email address.','Do not tell lies.','Do not make spelling mistakes.','Do not write too much.','Do not use many colours or pictures.']},
+    task:{kind:'mcq',label:'Better line',title:'Which line is better?',intro:'Read the two lines. Choose the better line for a CV.',items:[
+      {q:'Which email address is better?',opts:['cutekitty99@mail.com','anna.novak@mail.com'],a:1,why:'Use your name. It looks serious.'},
+      {q:'Which line is better?',opts:['Served customers in a café.','I was serving customers sometimes lol'],a:0,why:'Start with an action verb. Do not use slang like “lol”.'},
+      {q:'Which skills line is better?',opts:['Many things. I am awesome!','English, German, Word'],a:1,why:'Name your real skills.'},
+      {q:'Which line is better?',opts:['Waiter, Blue Café, summer 2025','I worked as a waiter and I did all the jobs and I was also in the kitchen and I cleaned and I talked to people and…'],a:0,why:'Short lines are easy to read.'},
+      {q:'Which education line is better?',opts:['School','Maple High School, 2022–2026'],a:1,why:'Write the name of the school and the years.'}]}
+  },
+  { nav:'Check it', title:'Find the mistakes', review:'Read Part 5 again: how to check a CV.',
+    theory:`<p>Before you send your CV, <b>check it</b>. One small mistake can make a bad first impression. Read your CV slowly. Then read it again.</p>
+<h4>Look for these mistakes</h4>
+<ul><li><b>Spelling</b>: <i>studant</i> should be <i>student</i></li><li><b>Capital letters</b>: <i>i am</i> should be <i>I am</i></li><li><b>A funny or unserious email address</b></li><li><b>Starting a work line with “I”</b></li><li><b>Wrong tense</b>: <i>serving</i> should be <i>served</i> for an old job</li><li><b>Big words with no facts</b>: <i>awesome at everything</i></li></ul>
+<p class="callout">Tip: read your CV <mark>out loud</mark>. Ask a friend to read it too.</p>
+<p>Some lines are correct. Do not tap a line if you see no mistake.</p>`,
+    task:{kind:'errors',label:'Error hunt',title:'Find the mistakes in Tom’s CV',intro:'Read Tom’s CV. Tap every line that has a mistake. Some lines are correct. You get 1 point for each mistake you find. You lose 1 point if you tap a correct line.',items:[
+      {t:'Name: Tom Berg',err:false,why:'No mistake. The name is clear.'},
+      {t:'Email: tommy_the_king99@mail.com',err:true,why:'This email address is not serious. Use your name, like tom.berg@mail.com.'},
+      {t:'Phone: +47 913 45 678',err:false,why:'No mistake. The phone number is clear.'},
+      {t:'Profile: i am a friendly studant. I like football.',err:true,why:'Two mistakes: write “I” with a capital letter, and spell “student” correctly.'},
+      {t:'Education: Maple High School, 2022–2026',err:false,why:'No mistake. It has the school and the years.'},
+      {t:'Work experience: Waiter, Blue Café, summer 2025',err:false,why:'No mistake. It has the job, the place and the time.'},
+      {t:'I serving customers and I cleaning tables.',err:true,why:'Start with an action verb in the past tense, not “I”: “Served customers. Cleaned tables.”'},
+      {t:'Skills: Englsh, German, Word',err:true,why:'Spelling mistake: “Englsh” should be “English”.'},
+      {t:'Computer skills: I am awesome at everything!!!',err:true,why:'This is not exact. Write real skills, like “Word and Excel”. Do not use “!!!”.'},
+      {t:'Interests: Football, music',err:false,why:'No mistake. It is short and clear.'}]}
+  }]
+},
+/* ------------------------------------------------------------------ B2 */
+B2:{
+  code:'B2', tag:'Level B2 · Upper-intermediate',
+  h:'Write a CV that gets you <mark>the interview</mark>',
+  intro:'You will learn how recruiters read CVs and how to write targeted, honest bullet points and how to proofread a CV like a recruiter. There are five parts. Each has a lesson and a scored task, with feedback on every answer.',
+  how:['Read the lesson','Complete the task','Review your feedback'],
+  msgs:[[1,'Perfect score.','Every answer is correct. Excellent.'],[0.8,'Strong result.','Most answers are right. Check the feedback for the rest.'],[0.5,'Good effort.','Read the feedback carefully, then try again to improve your score.'],[0,'Needs more work.','Review the lesson, then attempt the task again.']],
+  final:[[0.85,'Excellent.','You understand what makes a CV effective and can write targeted, evidence-based statements. You are ready to draft a real CV.'],[0.65,'Solid work.','You have a good grasp of CV conventions. Revisit the tasks with lower scores to sharpen your language.'],[0.4,'Developing.','You know the basics. Review the lessons on structure and language, then retry the weaker tasks.'],[0,'More practice needed.','Work through each lesson again and retry the tasks.']],
+  parts:[
+  { nav:'Purpose', title:'Purpose and audience', review:'Revisit Part 1: the purpose of a CV and tailoring.',
+    theory:`<p>A CV (curriculum vitae) is not a life story. It is a <mark>targeted marketing document</mark>: its job is to persuade a recruiter to invite you to an interview. Recruiters often scan many applications, so the first half of the page has to do most of the work.</p>
+<p>Terms vary by country. In the UK and much of Europe, <i>CV</i> is the usual word. In the US, a <i>résumé</i> is the common term and is usually shorter. Many European employers also accept the standard <i>Europass</i> format.</p>
+<h4>Think about your reader</h4>
+<ul><li>Read the job advert and note the key requirements.</li><li>Choose the experience that best matches them and place it where it can be seen quickly.</li><li>Leave out anything that does not support your case.</li></ul>`,
+    widget:{type:'gloss',title:'Useful vocabulary',terms:[['tailor','to adapt something so that it suits a particular purpose'],['recruiter','a person whose job is to find and select candidates'],['chronological','arranged in the order in which things happened'],['quantify','to express something as a number or amount'],['referee','a person who gives a statement about your character or work'],['ATS','applicant tracking system: software that stores and filters job applications']]},
+    task:{kind:'mcq',label:'Quiz',title:'Check your understanding',intro:'Choose the best answer for each question.',items:[
+      {q:'What is the main purpose of a CV?',opts:['To tell your complete life story','To persuade an employer to invite you for an interview','To list every job you have ever had','To explain why you left your last job'],a:1,why:'A CV is a targeted document that aims to get you an interview, not to record everything.'},
+      {q:'What does it mean to “tailor” your CV?',opts:['Make it longer','Use a decorative template','Adapt it to fit the job you are applying for','Translate it into another language'],a:2,why:'Tailoring means adjusting content and emphasis for each application.'},
+      {q:'In a standard CV, how is experience normally ordered?',opts:['Alphabetically by employer','From the oldest job to the newest','By salary','Reverse chronological order, most recent first'],a:3,why:'Recruiters want to see your most recent experience first.'},
+      {q:'An applicant tracking system (ATS) is software that…',opts:['writes your CV for you','scans and filters applications, often by keywords','checks your grammar','contacts your referees'],a:1,why:'ATS software filters applications, often by matching keywords from the advert.'},
+      {q:'How long should a CV usually be for a school-leaver or student?',opts:['One page, or two at most','Four to five pages','Half a page','As long as it takes'],a:0,why:'With limited experience, one page (two at most) keeps the CV focused.'}]}
+  },
+  { nav:'Structure', title:'Structure and layout', review:'Revisit Part 2: the standard sections of a CV.',
+    theory:`<p>Recruiters scan before they read, so a clear structure matters. Use <b>reverse chronological order</b>: put your most recent experience and education first. Keep to one page (two at most) and use a clean, consistent layout with standard fonts, clear headings and plenty of white space.</p>
+<p>Typical sections, in a common order:</p>
+<ol><li>Contact details</li><li>Personal statement</li><li>Experience (paid or voluntary)</li><li>Education</li><li>Skills (languages, IT, certificates)</li><li>Achievements and interests (optional)</li></ol>
+<p>Students with little work experience can move <i>Education</i> above <i>Experience</i> and include school projects, clubs and volunteering.</p>`,
+    widget:{type:'ann',hint:'Tap a section of Maja’s CV to see how it works.',secs:[
+      {label:'Contact details',big:true,lines:['Maja Lindgren','Stockholm · maja.lindgren@email.com · +46 70 123 45 67'],note:'Name, city, a professional email address and a phone number. A photo, age or marital status is not expected in many countries, so check local conventions.'},
+      {label:'Personal statement',lines:['Motivated upper-secondary student with experience in social-media content and event organisation. Seeking a summer internship in marketing.'],note:'Two or three lines tailored to the role: who you are, what you offer and what you are aiming for.'},
+      {label:'Experience',lines:['Social Media Volunteer, Harbour Youth Centre · Jan 2025 – present','Created weekly posts that increased followers by 40% in three months.'],note:'Reverse chronological order. Each bullet follows the pattern: action verb + what you did + result.'},
+      {label:'Education',lines:['Fjordview Upper Secondary School · 2023–2026','Social Sciences programme: English, Media Studies, Business'],note:'Most recent first. Add relevant subjects, grades or projects that support the role.'},
+      {label:'Skills',lines:['Languages: Swedish (native), English (C1), German (B1)','Tools: Canva, Google Analytics (basic), Excel'],note:'Be specific. Give levels for languages (the CEFR scale is widely understood) and name the tools you can actually use.'},
+      {label:'Additional',lines:['Regional debate finalist, 2025','References available on request'],note:'Awards and achievements add evidence. “References available on request” saves space.'}]},
+    task:{kind:'classify',label:'Sorting',title:'Strong, weak or leave out?',intro:'Decide how each line would work in a CV. Choose one option for each line.',cats:[{k:'strong',l:'Strong: keep it'},{k:'weak',l:'Weak: rewrite it'},{k:'out',l:'Leave it out'}],items:[
+      {t:'Raised €850 for charity by organising a school bake sale.',a:'strong',why:'Action verb, clear activity and a measurable result.'},
+      {t:'Responsible for helping customers.',a:'weak',why:'“Responsible for” describes a duty, not an achievement. Use an action verb and add a result.'},
+      {t:'I am a hard-working team player who is passionate about everything.',a:'weak',why:'Clichés without evidence. Show these qualities through examples.'},
+      {t:'Religion and political opinions.',a:'out',why:'Irrelevant to most jobs, so it should be left out.'},
+      {t:'Designed a poster campaign that increased event attendance by 30%.',a:'strong',why:'Specific action and a quantified result.'},
+      {t:'Referee: my best friend says I’m great.',a:'out',why:'A friend is not a professional referee. Choose a teacher or a former employer instead.'},
+      {t:'Did some work in a shop.',a:'weak',why:'Vague. Say what you did, how often and with what result.'},
+      {t:'Translated 12 product descriptions from Norwegian into English for a local online shop.',a:'strong',why:'Concrete task, languages and scale.'}]}
+  },
+  { nav:'Language', title:'Language that shows results', review:'Revisit Part 3: action verbs and results.',
+    theory:`<p>Strong bullet points follow a simple pattern: <mark>action verb + what you did + the result</mark>. Numbers make results concrete: percentages, amounts, time saved, people reached.</p>
+<ul><li>Use the <b>past simple</b> for finished roles and the <b>present simple</b> for current ones.</li><li>Drop the pronoun: write <i>Organised a charity quiz</i>, not <i>I organised a charity quiz</i>.</li><li>Keep bullets <b>parallel</b>: start each one with the same grammatical form.</li><li>Avoid vague clichés (<i>team player, hard worker, passionate</i>) unless you can prove them with evidence.</li></ul>
+<p>Useful verbs: <i>led, coordinated, streamlined, introduced, collaborated, achieved, delivered, analysed.</i></p>`,
+    widget:{type:'ba',title:'From duty to achievement',pairs:[
+      {bad:'Was responsible for the school newspaper.',good:'Edited a termly school newspaper read by 600 students.',note:'Replace “responsible for” with an action verb and add scale.'},
+      {bad:'Helped with a charity event.',good:'Coordinated 15 volunteers at a charity event that raised €1,200.',note:'Say how you helped and what the result was.'},
+      {bad:'Good at communication.',good:'Presented project findings to classes of up to 30 students in English.',note:'Show the skill in action instead of claiming it.'}]},
+    task:{kind:'gap',label:'Gap fill',title:'Choose the best verb',intro:'Choose the best word for each gap. Three words in the box do not fit any gap.',bank:['Collaborated','Responsible','Led','Achieved','Achievement','Streamlined','Introduced','Coordinated','Leadership'],items:[
+      {pre:'',post:' a team of five volunteers during the school’s charity week.',a:['Led','Coordinated'],why:'You lead or coordinate a team. “Led” is the strongest choice.'},
+      {pre:'',post:' the existing sign-up process, which cut waiting time by half.',a:['Streamlined'],why:'“Streamlined” means to make a process simpler and more efficient.'},
+      {pre:'',post:' with designers and teachers to create a new school website.',a:['Collaborated'],why:'Only “collaborated” is followed by “with”.'},
+      {pre:'',post:' a monthly newsletter that reached over 300 students.',a:['Introduced','Coordinated'],why:'You introduce or coordinate a newsletter. “Introduced” fits best because it is new.'},
+      {pre:'',post:' the highest sales figures in the team in July 2025.',a:['Achieved'],why:'You achieve results or figures.'},
+      {pre:'',post:' a recycling scheme that reduced paper waste by 20%.',a:['Introduced','Led','Coordinated'],why:'“Introduced” fits best because the scheme was new. “Led” and “coordinated” also work.'}]}
+  },
+  { nav:'Accuracy', title:'Honesty, keywords and polish', review:'Revisit Part 4: rewriting weak lines.',
+    theory:`<p>Many larger employers use an <b>applicant tracking system (ATS)</b> to filter applications before a person reads them. The software looks for keywords from the job advert, so it helps to reuse the advert’s own terms when they honestly describe you.</p>
+<p>Honesty matters just as much. Exaggerated or invented claims are easy to check and can end an application immediately. Present your real achievements as strongly and specifically as you can.</p>
+<p>Finally, polish. Spelling mistakes suggest a lack of care, so proofread aloud, read the CV backwards, or ask someone else to check it.</p>`,
+    widget:{type:'dd',dos:['Mirror key terms from the job advert, where they are true.','Proofread twice and ask someone else to check.','Save and send a PDF with a clear name, such as Firstname_Lastname_CV.pdf.','Use a professional email address and a current phone number.','Check your public social-media profiles.'],donts:['Exaggerate or invent qualifications or results.','Use fancy fonts, images or text boxes that software may not read.','List every school subject and every hobby.','Write long paragraphs. Use concise bullet points.','Include personal details that are irrelevant to the job.']},
+    task:{kind:'mcq',label:'Rewrite',title:'Which version is strongest?',intro:'Each weak line has three possible rewrites. Choose the strongest one for a CV.',items:[
+      {q:'Weak line: “Worked in a café.”',opts:['Responsible for working in a café during weekends.','I worked in a café and it was a good experience.','Served up to 80 customers per shift in a busy café, handling cash and orders accurately.'],a:2,why:'The last option has an action verb, shows scale and implies reliability. The first is a duty and the second starts with “I” and gives no evidence.'},
+      {q:'Weak line: “Good at organising things.”',opts:['Always organising things for school.','Very organised person with excellent organisational skills.','Organised a three-day exchange visit for 25 students, managing the budget and schedule.'],a:2,why:'It proves the skill with a concrete example and numbers. The others only claim it.'},
+      {q:'Weak line: “Helped improve the club’s website.”',opts:['Helped to improve the website of the club.','Redesigned the club’s website, cutting page-loading time by 35%.','Improving the club website is something I did last year.'],a:1,why:'A specific action and a quantified result make the contribution clear.'},
+      {q:'Weak line: “Good at languages.”',opts:['Fluent in Polish and English (C1); conversational German (B1).','Speaks lots of languages very well.','I like languages and I am good at them.'],a:0,why:'Naming languages and levels is precise and verifiable.'},
+      {q:'Weak line: “I was captain of the school team.”',opts:['I was the captain of the school football team and I enjoyed it.','Captained the school football team to the regional final in 2025.','Football team captain: a good leader.'],a:1,why:'It starts with an action verb, drops the pronoun and adds an achievement.'}]}
+  },
+  { nav:'Proofread', title:'Proofreading and quality control', review:'Revisit Part 5: how to proofread a CV.',
+    theory:`<p>Before you send a CV, review it as a recruiter would. Many rejections are caused by small, avoidable errors. Check four areas:</p>
+<ol><li><b>Accuracy:</b> dates, names and figures are correct and consistent, and nothing is exaggerated.</li><li><b>Language:</b> spelling, grammar, tense and parallel structure.</li><li><b>Impact:</b> bullets begin with action verbs and show results, not duties or clichés.</li><li><b>Relevance:</b> every line supports the application, and irrelevant personal details are left out.</li></ol>
+<p class="callout">Practical tips: read the CV aloud, read it backwards line by line to catch spelling, and ask someone else to check it. Fresh eyes notice what you no longer see.</p>
+<p>Not every line is wrong. A current role in the present simple with a result in the past tense is correct. Take care not to flag lines that follow the conventions.</p>`,
+    task:{kind:'errors',label:'Error hunt',title:'Proofread Jonas’s CV',intro:'Jonas is applying for a summer internship. Tap every line that contains a problem with wording, accuracy, relevance or spelling. Some lines are correct. You score 1 point for each real problem you find and lose 1 point for each correct line you flag.',items:[
+      {t:'Jonas Haugen · Oslo · jonas.haugen@email.com · +47 400 12 345',err:false,why:'No error. The contact details are clear and professional.'},
+      {t:'Personal statement: Hard-working team player who is passionate about everything and always thinks outside the box.',err:true,why:'Clichés with no evidence. Show these qualities with a specific example and a result.'},
+      {t:'Social Media Assistant, Fjord FC · Aug 2024 – present: Create match-day posts that increased followers by 35% in four months.',err:false,why:'No error. The present simple suits a current role, and the past tense describes a finished result with a number.'},
+      {t:'Volunteer, Youth Sports Day · Jun 2024: Was responsible for helping with various tasks.',err:true,why:'A vague duty with no action verb and no result. Say exactly what you did and what changed.'},
+      {t:'Café Assistant, Nordic Bakery · Jun 2023 – Aug 2023: Served up to 60 customers per shift and trained two new colleagues.',err:false,why:'No error. Action verbs, parallel structure and a sense of scale.'},
+      {t:'Education: Fjordview Upper Secondary School, 2023–2026 (Social Sciences, Buisness, English)',err:true,why:'Spelling mistake: “Buisness” should be “Business”.'},
+      {t:'Skills: Excel, Canva, communication, lots of other stuff',err:true,why:'Vague and too informal. Name the skills or tools you can really use.'},
+      {t:'Languages: Norwegian (native), English (C1), French (B1), fluent in seven languages',err:true,why:'The line claims seven languages but lists only three. Exaggeration is easy to check, so list only what you can prove.'},
+      {t:'Religion: Christian · Marital status: single',err:true,why:'Irrelevant to the job and not needed. Leave personal details like these out.'},
+      {t:'References: available on request',err:false,why:'No error. This is a standard, space-saving line.'}]}
+  }]
+}
+};
+
+/* ------------------------------------------------------------------ state */
+var KEY='cv-workshop-v1';
+var level='A2';
+var S={A2:{step:0,t:{}},B2:{step:0,t:{}},name:''};
+function cur(){return S[level]}
+function $(s){return document.querySelector(s)}
+function fresh(T){return {a:T.kind==='write'?'':new Array(slots(T)).fill(T.kind==='errors'?false:null),done:false,score:0,res:[]}}
+function taskState(i){var t=cur().t;if(!t[i])t[i]=fresh(DATA[level].parts[i].task);return t[i]}
+function answered(st){return st.a.filter(function(v){return v!==null}).length}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({level:level,name:S.name,A2:S.A2,B2:S.B2}))}catch(e){}}
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY);if(!raw)return;var d=JSON.parse(raw);
+    if(d.level&&DATA[d.level])level=d.level;
+    if(typeof d.name==='string')S.name=d.name.slice(0,60);
+    Object.keys(DATA).forEach(function(lv){
+      var src=d[lv],L=DATA[lv];if(!src)return;
+      if(Number.isInteger(src.step)&&src.step>=0&&src.step<=L.parts.length)S[lv].step=src.step;
+      L.parts.forEach(function(p,i){
+        var t=src.t&&src.t[i];if(!t)return;var T=p.task;
+        var shape=T.kind==='write'?typeof t.a==='string':(Array.isArray(t.a)&&t.a.length===slots(T));
+        var resOk=!t.done||(Array.isArray(t.res)&&t.res.length===slots(T));
+        if(shape&&resOk)S[lv].t[i]={a:t.a,done:!!t.done,score:+t.score||0,res:t.res||[]};
+      });
+    });
+  }catch(e){}
+}
+
+function grade(T,a){
+  var res;
+  if(T.kind==='mcq')res=T.items.map(function(it,i){return {ok:a[i]===it.a,why:it.why,correct:it.opts[it.a]}});
+  else if(T.kind==='classify')res=T.items.map(function(it,i){return {ok:a[i]===it.a,why:it.why,correct:T.cats.filter(function(c){return c.k===it.a})[0].l}});
+  else if(T.kind==='gap')res=T.items.map(function(it,i){return {ok:it.a.indexOf(a[i])>-1,why:it.why,correct:it.a.join(' / ')}});
+  else if(T.kind==='errors')res=T.items.map(function(it,i){return {ok:(!!a[i])===it.err,why:it.why}});
+  else res=T.criteria.map(function(c){return {ok:!!c.test(a)}});
+  if(T.kind==='errors'){var found=0,wrong=0;T.items.forEach(function(it,i){if(a[i]){if(it.err)found++;else wrong++}});return {res:res,score:Math.max(0,found-wrong)}}
+  return {res:res,score:res.filter(function(r){return r.ok}).length};
+}
+function pick(list,ratio){for(var i=0;i<list.length;i++){if(ratio>=list[i][0])return list[i]}return list[list.length-1]}
+
+/* ------------------------------------------------------------------ html builders */
+function widgetHTML(w){
+  if(!w)return '';
+  if(w.type==='gloss'){
+    return '<div><h4 class="wtitle">'+esc(w.title)+'</h4></div><dl class="gloss">'+w.terms.map(function(t){return '<dt>'+esc(t[0])+'</dt><dd>'+esc(t[1])+'</dd>'}).join('')+'</dl>';
+  }
+  if(w.type==='ann'){
+    var s0=w.secs[0];
+    return '<h4 class="wtitle">'+esc(w.hint)+'</h4><div class="ann"><div class="note" aria-live="polite"><span class="mono">What is this?</span><h4 data-nt>'+esc(s0.label)+'</h4><p data-nx>'+esc(s0.note)+'</p></div><div class="cv">'+
+      w.secs.map(function(s,i){return '<button type="button" class="cvsec" data-sec="'+i+'" aria-pressed="'+(i===0)+'"><span class="lab">'+esc(s.label)+'</span>'+s.lines.map(function(l,j){return '<span class="'+(s.big&&j===0?'big':'')+'">'+esc(l)+'</span>'}).join('')+'</button>'}).join('')+'</div></div>';
+  }
+  if(w.type==='ba'){
+    return '<h4 class="wtitle">'+esc(w.title)+'</h4><div class="pairs">'+w.pairs.map(function(p){return '<div class="pair"><div class="cols"><div class="c before"><span class="mono">Weak</span><p>'+esc(p.bad)+'</p></div><div class="c after"><span class="mono">Strong</span><p>'+esc(p.good)+'</p></div></div><p class="pn">'+esc(p.note)+'</p></div>'}).join('')+'</div>';
+  }
+  if(w.type==='dd'){
+    return '<div class="dd"><div class="do"><h4>Do</h4><ul>'+w.dos.map(function(x){return '<li><span class="g">✓</span><span>'+esc(x)+'</span></li>'}).join('')+'</ul></div><div class="dont"><h4>Don’t</h4><ul>'+w.donts.map(function(x){return '<li><span class="g">✗</span><span>'+esc(x)+'</span></li>'}).join('')+'</ul></div></div>';
+  }
+  return '';
+}
+function fb(r,showCorrect){
+  return '<p class="fb '+(r.ok?'ok':'no')+'"><b>'+(r.ok?'✓ Correct.':'✗ Not quite.')+'</b> '+((!r.ok&&showCorrect)?'Answer: <b>'+esc(r.correct)+'</b>. ':'')+esc(r.why||'')+'</p>';
+}
+function mcqHTML(T,st,step){
+  return '<div class="items">'+T.items.map(function(it,i){
+    var r=st.done?st.res[i]:null;
+    return '<div class="q" role="group" aria-labelledby="qt'+step+'_'+i+'"><p class="qt" id="qt'+step+'_'+i+'"><span class="qn">'+(i+1)+'</span><span>'+esc(it.q)+'</span></p><div class="opts">'+
+      it.opts.map(function(o,j){
+        var checked=st.a[i]===j,cls='opt',tag='';
+        if(st.done){
+          if(j===it.a){cls+=' is-correct';tag='<span class="tag">'+(checked?'✓ Your answer':'Correct answer')+'</span>'}
+          else if(checked){cls+=' is-wrong';tag='<span class="tag">✗ Your answer</span>'}
+        }
+        return '<label class="'+cls+'"><input type="radio" name="q'+step+'_'+i+'" value="'+j+'" data-i="'+i+'"'+(checked?' checked':'')+(st.done?' disabled':'')+'><span class="otxt">'+esc(o)+'</span>'+tag+'</label>';
+      }).join('')+'</div>'+(r?fb(r,false):'')+'</div>';
+  }).join('')+'</div>';
+}
+function classifyHTML(T,st,step){
+  return '<div class="rows">'+T.items.map(function(it,i){
+    var r=st.done?st.res[i]:null;
+    return '<div class="row'+(r?(r.ok?' ok':' no'):'')+'"><label class="rt" for="c'+step+'_'+i+'"><span class="qn">'+(i+1)+'</span><span>'+esc(it.t)+'</span></label><select id="c'+step+'_'+i+'" data-i="'+i+'"'+(st.done?' disabled':'')+'><option value="">Choose…</option>'+
+      T.cats.map(function(c){return '<option value="'+c.k+'"'+(st.a[i]===c.k?' selected':'')+'>'+esc(c.l)+'</option>'}).join('')+'</select>'+(r?fb(r,true):'')+'</div>';
+  }).join('')+'</div>';
+}
+function gapHTML(T,st,step){
+  return '<ul class="bank" aria-label="Word box">'+T.bank.map(function(b){return '<li>'+esc(b)+'</li>'}).join('')+'</ul><ol class="gaps">'+T.items.map(function(it,i){
+    var r=st.done?st.res[i]:null;
+    return '<li class="gap'+(r?(r.ok?' ok':' no'):'')+'"><div class="gl"><span class="qn">'+(i+1)+'</span>'+(it.pre?'<span>'+esc(it.pre)+'</span>':'')+'<select id="g'+step+'_'+i+'" data-i="'+i+'" aria-label="Gap '+(i+1)+'"'+(st.done?' disabled':'')+'><option value="">Choose…</option>'+
+      T.bank.map(function(b){return '<option value="'+esc(b)+'"'+(st.a[i]===b?' selected':'')+'>'+esc(b)+'</option>'}).join('')+'</select><span>'+esc(it.post)+'</span></div>'+(r?fb(r,true):'')+'</li>';
+  }).join('')+'</ol>';
+}
+function errorsHTML(T,st,step){
+  return '<p class="mono">Tap a line to mark it as a mistake</p><div class="eitems">'+T.items.map(function(it,i){
+    var r=st.done?st.res[i]:null,marked=!!st.a[i],cls='opt',tag='';
+    if(r){
+      if(it.err&&marked){cls+=' is-correct';tag='<span class="tag">✓ Mistake found</span>'}
+      else if(it.err){cls+=' is-wrong';tag='<span class="tag">✗ Missed</span>'}
+      else if(marked){cls+=' is-wrong';tag='<span class="tag">✗ Not a mistake</span>'}
+      else{cls+=' is-correct';tag='<span class="tag">✓ Correct line</span>'}
+    }
+    return '<div class="eitem"><label class="'+cls+'"><input type="checkbox" data-i="'+i+'"'+(marked?' checked':'')+(st.done?' disabled':'')+'><span class="otxt">'+esc(it.t)+'</span>'+tag+'</label>'+(r?fb(r,false):'')+'</div>';
+  }).join('')+'</div>';
+}
+function writeHTML(T,st,step){
+  var crit='<ul class="crit">'+T.criteria.map(function(c,i){
+    if(st.done)return '<li class="'+(st.res[i].ok?'ok':'no')+'"><span class="mk">'+(st.res[i].ok?'✓':'✗')+'</span><span>'+esc(c.l)+'</span></li>';
+    return '<li><span class="mk">○</span><span>'+esc(c.l)+'</span></li>';
+  }).join('')+'</ul>';
+  return '<p>'+esc(T.prompt)+'</p><div><label for="wr'+step+'" class="sr">Your text</label><textarea id="wr'+step+'" rows="6" placeholder="'+esc(T.placeholder)+'"'+(st.done?' readonly':'')+'>'+esc(st.a)+'</textarea><p class="count" id="cnt">'+words(st.a)+' words · aim for '+T.minw+'–'+T.maxw+'</p></div>'+
+    '<div><p class="mono" style="margin-bottom:8px">'+(st.done?'Your result':'Your text should…')+'</p>'+crit+'</div>'+
+    (st.done?'<div class="model"><span class="mono">One possible model answer</span><p>'+esc(T.model)+'</p></div>':'');
+}
+
+function renderTask(){
+  var L=DATA[level],step=cur().step,T=L.parts[step].task,st=taskState(step),n=countOf(T);
+  var body=T.kind==='mcq'?mcqHTML(T,st,step):T.kind==='classify'?classifyHTML(T,st,step):T.kind==='gap'?gapHTML(T,st,step):T.kind==='errors'?errorsHTML(T,st,step):writeHTML(T,st,step);
+  var banner='';
+  if(st.done){var m=pick(L.msgs,st.score/n);banner='<div class="result" role="status" tabindex="-1"><div class="rs"><span>'+st.score+'</span><span class="o">/'+n+'</span></div><div><b>'+esc(m[1])+'</b><p>'+esc(m[2])+'</p></div></div>'}
+  var foot;
+  if(st.done)foot='<button type="button" class="btn ghost" id="retry">Try again</button>';
+  else foot=(T.kind==='write'?'':'<span class="mono" id="ans">'+ansText(T,st)+'</span>')+'<button type="button" class="btn" id="check">Check answers</button><span class="warn" id="msg" role="alert"></span>';
+  $('#taskHost').innerHTML='<section class="task" aria-labelledby="th'+step+'"><header class="task-h"><span class="mono">Task '+(step+1)+' · '+esc(T.label)+'</span><span class="mono">'+n+' points</span></header><div class="task-b"><h3 id="th'+step+'">'+esc(T.title)+'</h3>'+(T.intro?'<p class="lead">'+esc(T.intro)+'</p>':'')+banner+body+'<div class="task-f">'+foot+'</div></div></section>';
+}
+function partHTML(){
+  var L=DATA[level],step=cur().step,P=L.parts[step];
+  return '<div class="sheet"><p class="mono eyebrow">Part '+(step+1)+' of '+L.parts.length+' · Lesson</p><h2 class="ptitle" tabindex="-1">'+esc(P.title)+'</h2>'+P.theory+widgetHTML(P.widget)+'</div><div id="taskHost" style="margin-top:20px"></div>';
+}
+function introHTML(L){
+  return '<p class="mono eyebrow">'+esc(L.tag)+'</p><h1>'+L.h+'</h1><p class="tagline">'+esc(L.intro)+'</p><ul class="how">'+L.how.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>';
+}
+function totals(){
+  var L=DATA[level],e=0,m=0;
+  L.parts.forEach(function(p,i){m+=countOf(p.task);var st=cur().t[i];if(st&&st.done)e+=st.score});
+  return {e:e,m:m};
+}
+function updateScore(){var t=totals();$('#scoreNow').textContent=t.e;$('#scoreMax').textContent=t.m}
+function renderSteps(){
+  var L=DATA[level],step=cur().step,n=L.parts.length;
+  $('#steps').innerHTML=L.parts.map(function(p,i){
+    var st=cur().t[i],d=st&&st.done;
+    return '<button type="button" class="step'+(i===step?' on':'')+(d?' done':'')+'" data-go="'+i+'"'+(i===step?' aria-current="step"':'')+'><span class="sn">'+(d?'✓':(i+1))+'</span><span>'+esc(p.nav)+'</span>'+(d?'<span class="ss">'+st.score+'/'+countOf(p.task)+'</span>':'')+'</button>';
+  }).join('')+'<button type="button" class="step'+(step===n?' on':'')+'" data-go="'+n+'"'+(step===n?' aria-current="step"':'')+'><span class="sn">'+(n+1)+'</span><span>Results</span></button>';
+}
+function renderPager(){
+  var L=DATA[level],step=cur().step,n=L.parts.length,h='';
+  if(step>0)h+='<button type="button" class="btn ghost" data-go="'+(step-1)+'">← Back</button>';else h+='<span></span>';
+  if(step<n-1)h+='<button type="button" class="btn" data-go="'+(step+1)+'">Next part →</button>';
+  else if(step===n-1)h+='<button type="button" class="btn" data-go="'+n+'">See my results →</button>';
+  $('#pager').innerHTML=h;
+}
+function summaryText(rows,earned,max,pct,name){
+  var L=DATA[level],lines=['CV Workshop · '+L.tag];
+  if(name)lines.push('Name: '+name);
+  rows.forEach(function(r){lines.push('Task '+(r.i+1)+' ('+r.p.task.label+'): '+(r.d?r.sc+'/'+r.m:'not done'))});
+  lines.push('Total: '+earned+'/'+max+' ('+pct+'%)');
+  return lines.join('\n');
+}
+function resultsRows(){
+  var L=DATA[level],earned=0,max=0,doneN=0;
+  var rows=L.parts.map(function(p,i){var m=countOf(p.task),st=cur().t[i],d=!!(st&&st.done);max+=m;if(d){earned+=st.score;doneN++}return {p:p,i:i,m:m,d:d,sc:d?st.score:0}});
+  return {rows:rows,earned:earned,max:max,doneN:doneN,pct:max?Math.round(earned/max*100):0};
+}
+function resultsHTML(){
+  var L=DATA[level],R=resultsRows(),n=L.parts.length,band=pick(L.final,R.pct/100);
+  var next=[];
+  R.rows.forEach(function(r){
+    if(!r.d)next.push('<li>Task '+(r.i+1)+' ('+esc(r.p.task.label)+') is not done yet. <button type="button" class="link" data-go="'+r.i+'">Go to Part '+(r.i+1)+'</button></li>');
+    else if(r.sc/r.m<0.7)next.push('<li>Task '+(r.i+1)+': '+r.sc+'/'+r.m+'. '+esc(r.p.review)+' <button type="button" class="link" data-go="'+r.i+'">Open Part '+(r.i+1)+'</button></li>');
+  });
+  if(!next.length)next.push('<li>All tasks are strong. Try the other level for a new challenge.</li>');
+  var other=level==='A2'?'B2':'A2';
+  return '<section class="sheet results"><p class="mono eyebrow">Your results · '+esc(L.tag)+'</p><h2 class="ptitle" tabindex="-1">'+(R.doneN<n?'Your score so far':'Your final score')+'</h2>'+
+    '<div class="tot"><span class="big">'+R.earned+'</span><span class="o">/'+R.max+'</span><span class="pc"><mark>'+R.pct+'%</mark></span></div>'+
+    '<p><b>'+esc(band[1])+'</b> '+esc(band[2])+'</p>'+
+    (R.doneN<n?'<p class="callout">You finished '+R.doneN+' of '+n+' tasks. Finish the others to get your final score.</p>':'')+
+    '<div class="bars">'+R.rows.map(function(r){var w=r.d?Math.round(r.sc/r.m*100):0;return '<div class="bar"><span>Task '+(r.i+1)+' · '+esc(r.p.task.label)+'</span><span class="trk"><span class="fil" style="width:'+w+'%"></span></span><span class="bs">'+(r.d?r.sc+'/'+r.m:'Not done')+'</span></div>'}).join('')+'</div>'+
+    '<h4>What to do next</h4><ul class="next">'+next.join('')+'</ul>'+
+    '<div class="share"><label for="nm"><b>Your name</b> (optional)</label><input id="nm" type="text" maxlength="60" value="'+esc(S.name)+'" autocomplete="name"><label for="sum"><b>Copy your results</b> to send to your teacher</label><textarea id="sum" readonly>'+esc(summaryText(R.rows,R.earned,R.max,R.pct,S.name))+'</textarea><div class="acts"><button type="button" class="btn" id="copy">Copy results</button><span id="copyMsg" role="status"></span></div></div>'+
+    '<div class="acts"><button type="button" class="btn ghost" id="restart">Start this level again</button><button type="button" class="btn ghost" data-level="'+other+'" data-switch="1">Try level '+other+'</button></div></section>';
+}
+
+function render(){
+  var L=DATA[level],n=L.parts.length,step=cur().step;
+  document.querySelectorAll('.lv').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.level===level))});
+  updateScore();renderSteps();
+  $('#intro').innerHTML=step===0?introHTML(L):'';
+  if(step<n){$('#part').innerHTML=partHTML();renderTask()}else{$('#part').innerHTML=resultsHTML()}
+  renderPager();
+}
+function go(i){
+  cur().step=i;render();save();window.scrollTo(0,0);
+  var h=$('.ptitle');if(h)h.focus({preventScroll:true});
+}
+function msg(t){var m=$('#msg');if(m)m.textContent=t}
+function check(){
+  var step=cur().step,T=DATA[level].parts[step].task,st=taskState(step);
+  if(T.kind==='write'){if(words(st.a)<3){msg('Write your text first.');return}}
+  else if(T.kind!=='errors'){
+    var miss=st.a.findIndex(function(v){return v===null});
+    if(miss>-1){msg('Answer every question first ('+(st.a.length-answered(st))+' left).');var el=document.querySelector('#taskHost [data-i="'+miss+'"]');if(el)el.focus();return}
+  }
+  var g=grade(T,st.a);st.res=g.res;st.score=g.score;st.done=true;
+  renderTask();updateScore();renderSteps();save();
+  var r=$('.result');if(r){r.focus({preventScroll:true});r.scrollIntoView({block:'start'})}
+}
+function retry(){
+  var step=cur().step;cur().t[step]=fresh(DATA[level].parts[step].task);
+  renderTask();updateScore();renderSteps();save();
+  $('#taskHost').scrollIntoView({block:'start'});
+}
+
+function boot(){
+  load();render();
+  document.addEventListener('change',function(e){
+    var el=e.target;if(!el.matches||!el.matches('[data-i]'))return;
+    var step=cur().step,st=taskState(step);if(st.done)return;
+    var i=+el.dataset.i;
+    st.a[i]=el.type==='radio'?+el.value:el.type==='checkbox'?el.checked:(el.value===''?null:el.value);
+    var a=$('#ans');if(a)a.textContent=ansText(DATA[level].parts[step].task,st);
+    msg('');save();
+  });
+  document.addEventListener('input',function(e){
+    var el=e.target;
+    if(el.id&&el.id.indexOf('wr')===0){
+      var step=cur().step,st=taskState(step),T=DATA[level].parts[step].task;
+      if(st.done)return;st.a=el.value;
+      $('#cnt').textContent=words(el.value)+' words · aim for '+T.minw+'–'+T.maxw;msg('');save();
+    }else if(el.id==='nm'){
+      S.name=el.value.slice(0,60);var R=resultsRows();
+      $('#sum').value=summaryText(R.rows,R.earned,R.max,R.pct,S.name);save();
+    }
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    if(b.dataset.level){
+      if(b.dataset.level!==level){level=b.dataset.level;render();save();window.scrollTo(0,0)}
+      return;
+    }
+    if(b.dataset.go!==undefined){go(+b.dataset.go);return}
+    if(b.dataset.sec!==undefined){
+      var w=DATA[level].parts[cur().step].widget,s=w.secs[+b.dataset.sec],box=b.closest('.ann');
+      box.querySelectorAll('.cvsec').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+      box.querySelector('[data-nt]').textContent=s.label;box.querySelector('[data-nx]').textContent=s.note;
+      return;
+    }
+    if(b.id==='check')check();
+    else if(b.id==='retry')retry();
+    else if(b.id==='restart'){S[level]={step:0,t:{}};render();save();window.scrollTo(0,0)}
+    else if(b.id==='copy'){
+      var ta=$('#sum'),cm=$('#copyMsg');
+      var fallback=function(){ta.focus();ta.select();cm.textContent='Select the text and copy it.'};
+      try{navigator.clipboard.writeText(ta.value).then(function(){cm.textContent='Copied.'},fallback)}catch(err){fallback()}
+    }
+  });
+}
+
+if(typeof module!=='undefined'&&module.exports){module.exports={DATA:DATA,grade:grade,words:words,countOf:countOf}}
+else boot();
+})();
+</script>
+
+</body></html>
